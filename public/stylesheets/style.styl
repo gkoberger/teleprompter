@@ -4,11 +4,68 @@
   box-sizing border-box
 
 body
-  padding: 50px
+  padding: 100px 50px 50px
   font: 14px "Open Sans", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
 
-#pg-index
-  p
-    color #888
+nav
+  padding 15px
+  position absolute
+  top 0
+  width 100%
+  background #fff
+  border-bottom 1px solid #ddd
+  left 0
+  box-shadow 0 0 9px rgba(0,0,0,0.1)
+  input
+    width 670px
+    padding 7px 20px
+    border 1px solid #ddd
+    border-radius 4px
+.ipad
+  display none
+
+#content > *
+  color #BBB
+  &.current
+    color #000
+
+.is-tele
+  .switch
+    position absolute
+    top 0
+    left 0
+    color #fff
+    z-index 1000
+    font-size 30px
+    padding 15px
+  .ipad
+    display block
+  nav
+    display none
+  #content-parent
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    display block
+    background #000
+    color #fff
+    font-size 40px
+    overflow hidden
+    transform scaleX(-1)
+    #content
+      padding 0 50px
+      transition top 0.3s ease-out
+      position absolute
+      top 0
+      > *
+        opacity 0.3
+        margin 0
+        padding 20px 0
+        transition opacity 0.3s ease-out
+        color #fff
+        &.current
+          opacity 1

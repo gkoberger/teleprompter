@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // optional features, uncomment to use!
 
 /* Mongoose */
-// app.use(require('./lib/mongoose')());
+app.use(require('./lib/mongoose')());
 
 /* Cachebusting */
 app.use(require('./lib/cachebust')()); // heroku labs:enable runtime-dyno-metadata -a <<app>>

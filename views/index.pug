@@ -1,5 +1,20 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  nav
+    a.switch(href="#") Switch View
+    form(method="POST" action="/" style="float:right;")
+      input(type="text" name="url" value=paper)
+      | &nbsp;
+      | &nbsp;
+      button(type="submit") Update
+      | &nbsp;
+      | &nbsp;
+      a(href=paper target="_blank") Edit
+  a.ipad.switch(href="#")
+    i.fas.fa-random
+
+  #content-parent
+    #content
+      h1= title
+      != marked(markdown)
