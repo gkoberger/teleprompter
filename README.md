@@ -1,6 +1,3 @@
-TO SET UP CACHE BUSTING:
-========================
+This will let you turn any Dropbox Paper doc into a teleprompter. You can control it from a computer, and view it on an iPad.
 
-Run this:
-
-    heroku labs:enable runtime-dyno-metadata -a <<app>>
+If you see this and want to use it, create an Issue and I can fix the code up a bit so anyone can use it :)
