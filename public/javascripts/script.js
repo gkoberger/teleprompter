@@ -16,8 +16,6 @@ $.page('index', function() {
   $(window).keydown((e) => {
     if ($('input:focus, textarea:focus').length) return;
 
-//    if (!settings.paragraph) settings.paragraph = 0;
-
     if (e.keyCode === 83) { // S
       $('.switch').eq(0).trigger('click');
       update();
@@ -41,9 +39,6 @@ $.page('index', function() {
     $('#content > .current').removeClass('current');
     var $p = $('#content > *').eq(p);
     $p.addClass('current');
-
-    console.log($p.length, p);
-    console.log($p.position());
 
     //var offset = ($p.position().top) - (($('#tele').height() - $p.outerHeight()) / 2);
     var offset = $p.position().top - $('#content-parent').height() + $p.outerHeight() + 120;

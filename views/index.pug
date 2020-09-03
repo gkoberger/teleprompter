@@ -4,17 +4,17 @@ block content
   nav
     a.switch(href="#") Switch View
     form(method="POST" action="/" style="float:right;")
-      input(type="text" name="url" value=paper)
+      input(type="text" name="url" value=tele.url)
       | &nbsp;
       | &nbsp;
       button(type="submit") Update
       | &nbsp;
       | &nbsp;
-      a(href=paper target="_blank") Edit
+      a(href=tele.url target="_blank") Edit
   a.ipad.switch(href="#")
     i.fas.fa-random
 
   #content-parent
     #content
-      h1= title
-      != marked(markdown)
+      h1= tele.title
+      != marked(tele.markdown)

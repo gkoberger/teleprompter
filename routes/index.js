@@ -9,24 +9,7 @@ router.use((req, res, next) => {
   next();
 });
 
-/* GET home page. */
-/*
-router.get('/', (req, res, next) => {
-  req.tele.find({}).toArray(function (err, results) {
-    res.render('index', { title: 'Home' });
-  });
-});
-*/
-
-var DEBUG = true;
 function loadFile(file, cb) {
-  if (DEBUG) {
-    var fs = require('fs');
-    var contents = fs.readFileSync('./html').toString();
-    cb(contents);
-    return;
-  }
-
   request.get(file, function(err, data) {
     cb(data.body);
   })
@@ -42,30 +25,35 @@ router.get('/', (req, res, next) => {
     .find({})
     .sort({ created: -1 })
     .limit(1)
-    .toArray((err, latest) => {
-      const paper = latest[0].url;
-      loadFile(paper, function (html) {
-        const $ = cheerio.load(html);
-
-        var TurndownService = require('turndown');
-
-        var turndownService = new TurndownService();
-        var all = turndownService.turndown($('.ace-editor').html());
-        all = all.split(/[\n\r]/);
-        var title = clean(all.shift().trim());
-        var markdown = clean(all.join('\n'));
-
-        res.render('index', { title: 'Home', title, markdown, marked, paper });
-      });
+    .toArray((err, prompts) => {
+      const tele = prompts[0];
+      res.render('index', { title: tele.title, tele, marked });
     });
 });
 
 router.post('/', (req, res, next) => {
-  req.tele.insert({
-    created: new Date(),
-    url: req.body.url,
+  const paper = req.body.url;
+  loadFile(paper, function (html) {
+    const $ = cheerio.load(html);
+
+    var TurndownService = require('turndown');
+
+    var turndownService = new TurndownService();
+    var all = turndownService.turndown($('.ace-editor').html());
+    all = all.split(/[\n\r]/);
+    var title = clean(all.shift().trim());
+    var markdown = clean(all.join('\n'));
+
+    if (!title || !markdown) return res.send('oh no, an error!');
+
+    req.tele.insert({
+      created: new Date(),
+      url: req.body.url,
+      title,
+      markdown,
+    });
+    res.redirect('/');
   });
-  res.redirect('/');
 });
 
 module.exports = router;
