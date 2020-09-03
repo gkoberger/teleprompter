@@ -4,7 +4,7 @@
   box-sizing border-box
 
 body
-  padding: 100px 50px 50px
+  padding: 80px 50px 50px
   font: 14px "Open Sans", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
@@ -23,8 +23,35 @@ nav
     padding 7px 20px
     border 1px solid #ddd
     border-radius 4px
+    line-height 1em
+  .btn
+    padding 8px 20px
+    font-size 13px
+    line-height 1em
+    border-radius 4px
+    border 0 none
+    background #0262ff
+    color #fff
+    text-decoration none
+    display inline-block
+    &:hover
+      background darken(@background, 10%)
+    &.lite
+      color #0262ff
+      background #eee
+      &:hover
+        background darken(@background, 10%)
 .ipad
   display none
+
+.switch
+  i
+    margin-right 3px
+  span
+    opacity 0.6
+    font-size 14px
+    margin-left 4px
+    font-family monospace
 
 #content > *
   color #BBB

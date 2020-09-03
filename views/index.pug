@@ -2,15 +2,15 @@ extends layout
 
 block content
   nav
-    a.switch(href="#") Switch View
+    a.switch.btn(href="#") #[i.fas.fa-random] Switch View #[span s]
     form(method="POST" action="/" style="float:right;")
       input(type="text" name="url" value=tele.url)
       | &nbsp;
       | &nbsp;
-      button(type="submit") Update
+      button.btn(type="submit") Update
       | &nbsp;
       | &nbsp;
-      a(href=tele.url target="_blank") Edit
+      a.btn.lite(href=tele.url target="_blank") Edit
   a.ipad.switch(href="#")
     i.fas.fa-random
 
