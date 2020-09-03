@@ -9,7 +9,6 @@ const nib = require('nib');
 const fs = require('fs');
 
 const index = require('./routes/index');
-const users = require('./routes/users');
 
 const app = express();
 
@@ -65,7 +64,6 @@ app.use(require('./lib/cachebust')()); // heroku labs:enable runtime-dyno-metada
 app.use(require('./lib/helpers'));
 
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
