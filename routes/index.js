@@ -52,6 +52,9 @@ router.post('/', (req, res, next) => {
       title,
       markdown,
     });
+
+    req.app.io.emit('restart', {});
+
     res.redirect('/');
   });
 });

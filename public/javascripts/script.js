@@ -1,11 +1,17 @@
+var id = Math.floor(Math.random() * 10000);
+
+var state = window.sessionStorage;
+
 $.page('index', function() {
   var p = 0;
 
-  if('ontouchend' in document) {
+  if('ontouchend' in document || state.getItem('tele') === 'true') {
     $('body').addClass('is-tele');
   }
 
   $('.switch').click(function() {
+    state.setItem('tele', !$('body').hasClass('is-tele'));
+
     $('body').toggleClass('is-tele', !$('body').hasClass('is-tele'));
     update();
     return false;
@@ -32,9 +38,13 @@ $.page('index', function() {
     }
   });
 
-  function update() {
+  function update(fromSocket) {
     if(p < 0) p = 0;
     if(p >= $('#content > *').length - 1) p = $('#content > *').length - 1;
+
+    if (!fromSocket) {
+      socket.emit('paragraph', { p, id });
+    }
 
     $('#content > .current').removeClass('current');
     var $p = $('#content > *').eq(p);
@@ -45,4 +55,20 @@ $.page('index', function() {
     $('#content').css('top', offset * -1);
     $('#content').css('top', offset * -1);
   }
+
+
+  var socket = io('/');
+
+  socket.on('paragraph', function (data) {
+    if (!data || !data.id) return;
+    if(data.id == id) return;
+    p = data.p;
+    console.log(p);
+    update(true);
+  });
+
+  socket.on('restart', function (data) {
+    window.location.reload();
+  });
+    //socket.emit('my other event', { my: 'data' });
 });
