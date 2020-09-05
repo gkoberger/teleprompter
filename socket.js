@@ -8,6 +8,7 @@ module.exports = function(app, server) {
     socket.emit('paragraph', originalData);
 
     socket.on('paragraph', function (data) {
+      console.log('Paragraph');
       originalData = data;
       io.emit('paragraph', data);
     });
