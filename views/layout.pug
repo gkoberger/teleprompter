@@ -6,6 +6,11 @@ html
     link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet")
     link(rel="stylesheet", href=`/stylesheets/style.css?${cache}`)
 
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+
+    link(rel="apple-touch-icon" href=`http://${base}/images/icon.png?${cache}`)
+
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
 
     if hasSocial
