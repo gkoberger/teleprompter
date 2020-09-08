@@ -2,7 +2,9 @@ This will let you turn any Dropbox Paper doc into a teleprompter. You can contro
 
 If you see this and want to use it, create an Issue and I can fix the code up a bit so anyone can use it :)
 
-You'll need an `.env` file that contains:
+# Make it persist
+
+If you want this to work across app restarts, you'll need an `.env` file that contains the following Mongo connection details:
 
 ```
 DB_USER=...
