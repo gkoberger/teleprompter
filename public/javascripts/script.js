@@ -2,14 +2,14 @@ var id = Math.floor(Math.random() * 10000);
 
 var state = window.sessionStorage;
 
-$.page('index', function() {
+$.page('index', function () {
   var p = 0;
 
-  if('ontouchend' in document || state.getItem('tele') === 'true') {
+  if ('ontouchend' in document || state.getItem('tele') === 'true') {
     $('body').addClass('is-tele');
   }
 
-  $('.switch').click(function() {
+  $('.switch').click(function () {
     state.setItem('tele', !$('body').hasClass('is-tele'));
 
     $('body').toggleClass('is-tele', !$('body').hasClass('is-tele'));
@@ -19,10 +19,11 @@ $.page('index', function() {
 
   $('#content > *').eq(p).addClass('current');
 
-  $(window).keydown((e) => {
+  $(window).keydown(e => {
     if ($('input:focus, textarea:focus').length) return;
 
-    if (e.keyCode === 83) { // S
+    if (e.keyCode === 83) {
+      // S
       $('.switch').eq(0).trigger('click');
       update();
     }
@@ -39,8 +40,8 @@ $.page('index', function() {
   });
 
   function update(fromSocket) {
-    if(p < 0) p = 0;
-    if(p >= $('#content > *').length - 1) p = $('#content > *').length - 1;
+    if (p < 0) p = 0;
+    if (p >= $('#content > *').length - 1) p = $('#content > *').length - 1;
 
     if (!fromSocket) {
       socket.emit('paragraph', { p, id });
@@ -50,18 +51,32 @@ $.page('index', function() {
     var $p = $('#content > *').eq(p);
     $p.addClass('current');
 
+    var commands = $p.text().match(/\[(\w*):(\w*)\]/g);
+
+    if (commands) {
+      commands.forEach(function (c) {
+        var command = c.replace(/[\[\]]/g, '').split(':');
+
+        console.log('command', { command: command[0], value: command[1] });
+        socket.emit('command', { command: command[0], value: command[1] });
+      });
+    }
+
     //var offset = ($p.position().top) - (($('#tele').height() - $p.outerHeight()) / 2);
-    var offset = $p.position().top - $('#content-parent').height() + $p.outerHeight() + 120;
+    var offset =
+      $p.position().top -
+      $('#content-parent').height() +
+      $p.outerHeight() +
+      120;
     $('#content').css('top', offset * -1);
     $('#content').css('top', offset * -1);
   }
-
 
   var socket = io('/');
 
   socket.on('paragraph', function (data) {
     if (!data || !data.id) return;
-    if(data.id == id) return;
+    if (data.id == id) return;
     p = data.p;
     console.log(p);
     update(true);
@@ -70,5 +85,5 @@ $.page('index', function() {
   socket.on('restart', function (data) {
     window.location.reload();
   });
-    //socket.emit('my other event', { my: 'data' });
+  //socket.emit('my other event', { my: 'data' });
 });

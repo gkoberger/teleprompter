@@ -12,6 +12,11 @@ module.exports = function(app, server) {
       originalData = data;
       io.emit('paragraph', data);
     });
+
+    socket.on('command', function (data) {
+      console.log('Command', data);
+      io.emit('command', data);
+    });
   });
 
   app.io = io;
