@@ -23,8 +23,15 @@ function loadFile(file, cb) {
 }
 
 function clean(text) {
+  text = text.replace(/\\/g, ''); // Rogue escape characters
   text = text.replace(/\u200B/g, ''); // zero space width character
+
   return text;
+}
+
+function convert(tele) {
+  tele.markdown = tele.markdown.replace(/\[(\w*):(\w*)\]/g, '<span class="command">$1:$2</span>');
+  return tele;
 }
 
 router.get('/', (req, res, next) => {
@@ -34,7 +41,7 @@ router.get('/', (req, res, next) => {
       .sort({ created: -1 })
       .limit(1)
       .toArray((err, prompts) => {
-        const tele = prompts[0];
+        const tele = convert(prompts[0]);
         res.render('index', { title: tele.title, tele, marked });
       });
   } else {

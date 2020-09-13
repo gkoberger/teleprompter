@@ -43,19 +43,18 @@ $.page('index', function () {
     if (p < 0) p = 0;
     if (p >= $('#content > *').length - 1) p = $('#content > *').length - 1;
 
-    if (!fromSocket) {
-      socket.emit('paragraph', { p, id });
-    }
 
     $('#content > .current').removeClass('current');
     var $p = $('#content > *').eq(p);
     $p.addClass('current');
 
-    var commands = $p.text().match(/\[(\w*):(\w*)\]/g);
+    if (!fromSocket) {
+      socket.emit('paragraph', { p, id });
 
-    if (commands) {
-      commands.forEach(function (c) {
-        var command = c.replace(/[\[\]]/g, '').split(':');
+      var commands = $('.command', $p);
+
+      commands.each(function () {
+        var command = $(this).text().split(':');
 
         console.log('command', { command: command[0], value: command[1] });
         socket.emit('command', { command: command[0], value: command[1] });
