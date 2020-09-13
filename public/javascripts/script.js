@@ -27,12 +27,12 @@ $.page('index', function () {
       $('.switch').eq(0).trigger('click');
       update();
     }
-    if (e.keyCode === 34 || e.keyCode === 39 || e.keyCode === 40) {
+    if (e.keyCode === 34 || e.keyCode === 39 || e.keyCode === 40 || e.keyCode == 66) {
       p++;
       update();
       return false;
     }
-    if (e.keyCode === 33 || e.keyCode === 37 || e.keyCode === 38) {
+    if (e.keyCode === 33 || e.keyCode === 37 || e.keyCode === 38 || e.keyCode == 65) {
       p--;
       update();
       return false;
