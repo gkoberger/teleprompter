@@ -19,6 +19,11 @@ $.page('index', function () {
 
   $('#content > *').eq(p).addClass('current');
 
+  $('#content > *').click(function() {
+    p = $(this).index();
+    update();
+  });
+
   $(window).keydown(e => {
     if ($('input:focus, textarea:focus').length) return;
 
@@ -69,6 +74,20 @@ $.page('index', function () {
       120;
     $('#content').css('top', offset * -1);
     $('#content').css('top', offset * -1);
+
+    scrollIntoViewIfNeeded($p[0]);
+
+    function scrollIntoViewIfNeeded(target) {
+      if ($('body').is('.is-tele')) return;
+
+      if (target.getBoundingClientRect().bottom > window.innerHeight) {
+        target.scrollIntoView(false);
+      }
+
+      if (target.getBoundingClientRect().top < 0) {
+        target.scrollIntoView();
+      }
+    }
   }
 
   var socket = io('/');
