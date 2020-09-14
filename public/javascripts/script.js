@@ -19,6 +19,13 @@ $.page('index', function () {
 
   $('#content > *').eq(p).addClass('current');
 
+  $('#content > p').each(function() {
+    var $p = $(this);
+    $(this).find('.command').each(function() {
+      $p.prepend($(this));
+    });
+  });
+
   $('#content > *').click(function() {
     p = $(this).index();
     update();
