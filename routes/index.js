@@ -31,7 +31,7 @@ function clean(text) {
 }
 
 function convert(tele) {
-  tele.markdown = tele.markdown.replace(/\[(\w*):(\w*)\]/g, '<span class="command">$1:$2</span>');
+  tele.markdown = tele.markdown.replace(/\[([-_\w]*):([-_\w]*)\]/g, '<span class="command">$1:$2</span>');
   return tele;
 }
 
