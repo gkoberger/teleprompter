@@ -8,7 +8,7 @@ const _ = require('lodash');
 let teleCache = {
   title: 'Example Teleprompter',
   markdown:
-    'Enter in a **Dropbox Paper** URL to see this in action!\n\nThe text will show up here. You can move the highlighted text using arrow keys.',
+    'Enter in a **Dropbox Paper** URL to see this in action!\n\nThe text will show up here. You can move the highlighted text using arrow keys.\n\nYou can also trigger commands by including them in brackets. [command:action]',
 };
 
 router.use((req, res, next) => {
