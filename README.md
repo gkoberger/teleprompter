@@ -39,7 +39,7 @@ MULTI=true
 
 # Connect third party apps
 
-  1. Run [this code snippet](https://github.com/gkoberger/teleprompter/blob/master/connection_demo/index.js) (Node) locally on your computer, with the config filled in.
+  1. Run [this code snippet](https://github.com/gkoberger/teleprompter/tree/master/connection_demo) (Node) locally on your computer, with the config filled in.
   2. Put `[command:value]` into your Paper docs. Using the code, you'll get `{ command: '', value: ''}` when it's hit.
 
 Let me know if this doesn't make sense :)

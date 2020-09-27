@@ -69,6 +69,22 @@ nav
     padding 0px 5px
     border-radius 4px
 
+.actions
+  .is-tele &
+    display none
+  hr
+    margin: 40px 0;
+    border: 0 none;
+    border-top: 1px solid #eee;
+  a
+    i
+      margin-right 7px
+    text-decoration none
+    &:hover
+      color #4186fe
+      &:hover
+        color darken(@color, 20%)
+
 .is-tele
   .switch
     position absolute
@@ -133,8 +149,10 @@ nav
       font-family monospace
       border 0 none
       width 100%
+      color #fff
       &:focus
         background #fff
+        color #000
     button
       position absolute
       right 10px

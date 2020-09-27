@@ -18,3 +18,16 @@ block content
     #content
       h1= tele.title
       != marked(tele.markdown)
+
+      .actions
+        hr
+
+        div
+          a(href="https://github.com/gkoberger/teleprompter/tree/master/connection_demo" target="_blank")
+            i.fa.fa-code
+            | Connect via Node to automate things
+          if multi
+            | &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+            a(href="/logout")
+              i.fa.fa-sign-out-alt
+              | Log out

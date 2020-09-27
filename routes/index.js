@@ -48,6 +48,7 @@ router.use((req, res, next) => {
     return res.redirect('/');
   }
 
+  res.locals.multi = req.multi;
   res.locals.email = req.cookies.email || 'single';
 
   next();
