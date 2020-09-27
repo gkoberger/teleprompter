@@ -2,6 +2,12 @@ This will let you turn any Dropbox Paper doc into a teleprompter. You can contro
 
 If you see this and want to use it, create an Issue and I can fix the code up a bit so anyone can use it :)
 
+# Trying it out
+
+If you don't want to install it locally, you can play with it at https://tele.gkoberger.com
+
+(It asks for an email, but that's only so there's a unique connection and there's no overlap! Any random string, as long as it's the same across all devices, will do.)
+
 # Installing locally
 
 ```
