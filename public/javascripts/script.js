@@ -99,6 +99,8 @@ $.page('index', function () {
 
   var socket = io('/');
 
+  socket.emit('room', { email: $('#room').val() });
+
   socket.on('paragraph', function (data) {
     if (!data || !data.id) return;
     if (data.id == id) return;
@@ -110,5 +112,4 @@ $.page('index', function () {
   socket.on('restart', function (data) {
     window.location.reload();
   });
-  //socket.emit('my other event', { my: 'data' });
 });
