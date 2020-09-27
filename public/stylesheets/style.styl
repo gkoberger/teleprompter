@@ -145,8 +145,13 @@ nav
       top: 7px;
       background: #4186fe;
       color: #fff;
-    p.warning
+    p.warning, p.byline
       color #999
       font-size 15px
+      a
+        text-decoration none
+        color #4186fe
+        &:hover
+          color darken(@color, 20%)
       strong
         color #fff
