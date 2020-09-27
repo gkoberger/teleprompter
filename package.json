@@ -19,10 +19,12 @@
     "morgan": "~1.9.1",
     "nib": "^1.1.2",
     "nodemon": "^1.18.3",
+    "osascript": "^1.2.0",
     "pug": "~2.0.0-beta6",
     "request": "^2.88.2",
     "serve-favicon": "~2.3.0",
     "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "stylus": "0.54.5",
     "turndown": "^6.0.0"
   }
