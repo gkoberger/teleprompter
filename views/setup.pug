@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  form#email(method="POST" action="/setup")
+    h1 Teleprompter
+    p Enter your email address:
+    #email
+      input(type="text" name="email")
+      button(type="submit") Go
+    p.warning #[strong We don't use this email anywhere!] It's just a unique ID for pairing multiple devices together. Feel free to make up a pretend email address... just make sure you use the same one everywhere!
