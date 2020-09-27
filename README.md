@@ -29,3 +29,12 @@ By default, this works for one person at a time. If you want it to be multi-user
 MULTI=true
 ```
 
+(To use the MULTI version, you need to connect to a database)
+
+# Connect third party apps
+
+  1. Run [this code snippet](https://github.com/gkoberger/teleprompter/blob/master/connection_demo/index.js) (Node) locally on your computer, with the config filled in.
+  2. Put `[command:value]` into your Paper docs. Using the code, you'll get `{ command: '', value: ''}` when it's hit.
+
+Let me know if this doesn't make sense :)
+
