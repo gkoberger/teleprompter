@@ -4,13 +4,16 @@ block content
   nav
     a.switch.btn(href="#") #[i.fas.fa-random] Teleprompter View #[span s]
     form(method="POST" action="/" style="float:right;")
-      input(type="text" name="url" value=tele.url placeholder="Enter a Dropbox Paper URL")
+      input#paper(type="text" name="url" value=tele.url placeholder="Enter a Dropbox Paper URL")
       | &nbsp;
       | &nbsp;
-      button.btn(type="submit") Update
+      button#update.btn(type="submit") Update
       | &nbsp;
       | &nbsp;
-      a.btn.lite(href=tele.url target="_blank") Edit
+      if tele.url
+        a.btn.lite(href=tele.url target="_blank") Edit
+      else
+        a.btn.lite(href="https://paper.new" target="_blank") Create a Script
   a.ipad.switch(href="#")
     i.fas.fa-random
 

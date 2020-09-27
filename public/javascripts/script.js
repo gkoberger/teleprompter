@@ -9,6 +9,10 @@ $.page('index', function () {
     $('body').addClass('is-tele');
   }
 
+  $('#paper').keyup(function() {
+    $('#update').attr('disabled', !$(this).val().match(/paper/));
+  }).trigger('keyup');
+
   $('.switch').click(function () {
     state.setItem('tele', !$('body').hasClass('is-tele'));
 
