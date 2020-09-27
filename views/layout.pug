@@ -17,6 +17,8 @@ html
       meta(property="og:image" content=`http://${base}/images/social.png?${cache}`)
       meta(property="og:image:secure_url" content=`https://${base}/images/social.png?${cache}`)
   body(id='pg-' + pg)
+    input#room(type="hidden" value=email)
+
     block content
 
     script(src="/javascripts/jquery.min.js")

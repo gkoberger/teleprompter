@@ -35,6 +35,10 @@ router.post('/setup', (req, res, next) => {
 });
 
 router.use((req, res, next) => {
+  if (!req.multi) {
+    res.clearCookie('email');
+  }
+
   if (req.multi && !req.cookies.email) {
     return res.render('setup');
   }
@@ -43,6 +47,8 @@ router.use((req, res, next) => {
     res.clearCookie('email');
     return res.redirect('/');
   }
+
+  res.locals.email = req.cookies.email || 'single';
 
   next();
 });
@@ -140,7 +146,7 @@ router.post('/', (req, res, next) => {
       teleCache = tele;
     }
 
-    req.app.io.emit('restart', {});
+    req.app.io.to(req.multi ? req.cookies.email : 'single').emit('restart', {});
 
     res.redirect('/');
   });
